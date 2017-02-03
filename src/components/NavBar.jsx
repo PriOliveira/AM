@@ -7,30 +7,19 @@ import Dropdown 	 	 from './Dropdown';
 class NavBar extends React.Component{
 	render() {
 		var dropdownItems = {
+			'title': 'Departments',
 			'top': [
-				'Books & Ebooks', 
-				'Games', 
-				'Movies', 
-				'Music', 
+				'Books & Ebooks',
+				'Games',
+				'Movies',
+				'Music',
 				'Tv Show'
-			], 
+			],
 			'bottom': ['Kindle']
 		};
-		
+
 		return (
 			<div>
-			{/*<Nav bsStyle="tabs" activeKey="1" onSelect={this.handleSelect}>
-		        <NavItem eventKey="1" href="/home">NavItem 1 content</NavItem>
-		        <NavItem eventKey="2" title="Item">NavItem 2 content</NavItem>
-		        <NavItem eventKey="3" disabled>NavItem 3 content</NavItem>
-		        <NavDropdown eventKey="4" title="Dropdown" id="nav-dropdown">
-		          <MenuItem eventKey="4.1">Action</MenuItem>
-		          <MenuItem eventKey="4.2">Another action</MenuItem>
-		          <MenuItem eventKey="4.3">Something else here</MenuItem>
-		          <MenuItem divider />
-		          <MenuItem eventKey="4.4">Separated link</MenuItem>
-		        </NavDropdown>
-		    </Nav>*/}
 				<nav className="navbar navbar-inverse">
 					<div className="container-fluid">
 						<div className="navbar-header">
@@ -41,21 +30,15 @@ class NavBar extends React.Component{
 								<li className="dropdown">
 									<Dropdown items={dropdownItems}/>
 								</li>
-								<li className="active">
+								<li>
 									<a href="#">
-										Kindle Store 
+										Kindle Store
 										<span className="sr-only"></span>
 									</a>
 								</li>
 							</ul>
-							{/*<form className="navbar-form navbar-left">
-								<div className="form-group">
-									<input type="text" className="form-control" placeholder="Search"/>
-								</div>
-								<button type="submit" className="btn btn-default">Submit</button>
-							</form>*/}
 							<ul className="nav navbar-nav navbar-right">
-								<li><a href="#">Sign In</a></li>
+								<li><a href="/login">Sign In</a></li>
 								<li><a href="#">Cart</a></li>
 							</ul>
 						</div>

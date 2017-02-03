@@ -57,8 +57,9 @@ class BookStore extends EventEmitter{
 
 	_removeBook(ISBN13){
 		this.books = this.books.filter(function(book){
-		  if(book.ISBN13 !== ISBN13) 
+		  if(book.ISBN13 !== ISBN13)
 		    return book;
+			return false;
 		});
 		this.emit("change");
 	}
@@ -66,9 +67,10 @@ class BookStore extends EventEmitter{
 	_buyBook(info){
 		this.books = this.books.filter(function(book){
 		  if(book.ISBN13 === info.ISBN13){
-		  	book.Stock -= info.quantity;	
-		  }
-		  return book;
+		  	book.Stock -= info.quantity;
+				return book;
+			}
+			return false;
 		});
 		this.emit("change");
 	}
@@ -76,16 +78,16 @@ class BookStore extends EventEmitter{
 	_handleActions(action){
 		switch(action.type){
 			case('BUY_BOOK'):
-				this._buyBook(action.data); 
-				break;	
-			case('ADD_BOOK'): 
+				this._buyBook(action.data);
+				break;
+			case('ADD_BOOK'):
 				this._addBook(action.data);
 				break;
 			case('REMOVE_BOOK'):
-				this._removeBook(action.data); 
+				this._removeBook(action.data);
 				break;
 			default:
-				break;			
+				break;
 		}
 	}
 }

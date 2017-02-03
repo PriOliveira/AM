@@ -1,14 +1,10 @@
 import React from 'react';
+
 import BookStore from '../Flux/BookStore';
 import * as BookActions from '../Flux/BookActions';
 
 import BooksGrid from './BooksGrid';
 
-import io from 'socket.io';
-
-//var socket;
-
-//io.on("connection", function() {});
 
 class RegisterBook extends React.Component{
 	constructor(){
@@ -20,7 +16,6 @@ class RegisterBook extends React.Component{
 
 	_handleSave(){
 		BookActions.addBook(this.state.book);
-		//socket.emit("newBook", this.state.book);
 	}
 
 	render(){
@@ -28,9 +23,9 @@ class RegisterBook extends React.Component{
 		let style = {
 			'img': {
 				'margin': '20px',
-				'height': '300px', 
-				'top': '0px', 
-				'left': '10px' 
+				'height': '300px',
+				'top': '0px',
+				'left': '10px'
 			},
 			'subtitle': {
 				'color': 'gray',
@@ -42,7 +37,7 @@ class RegisterBook extends React.Component{
 				'borderRadius': '25px',
 			    /*border: 2px solid #808080;*/
 			    'boxShadow': '0 0 0 4px rgba(0,0,0,.1)',
-			    'padding': '20px', 
+			    'padding': '20px',
 			    'width': '200px',
 			    'height': '300px'
 			},
@@ -51,7 +46,7 @@ class RegisterBook extends React.Component{
 			}
 		};
 
-		
+
 		return (
 			<div className="container">
 				<div className="row">
@@ -64,7 +59,7 @@ class RegisterBook extends React.Component{
 					{/*<div className=".col-xs-12 .col-md-8">*/}
 					<div className="col-xs-3">
 						<img className="img-thumbnail img-responsive" style={style.img}
-							 height="300" 
+							 height="300"
 							 src={book.Cover} alt={book.OriginalTitle + " Cover"}/>
 					</div>
 					<div className="col-xs-6">
@@ -82,11 +77,11 @@ class RegisterBook extends React.Component{
 						<h2>$ {book.Price}</h2>
 						<br />
 			        	<br />
-			        	Quantidade: 
+			        	Quantidade:
 						<input type="number" min="0" max="100" defaultValue="1"/>
 						<br />
 						<br />
-						
+
 					</div>
 				</div>
 				<div id="recomendations" className="row">

@@ -1,6 +1,9 @@
 import React from 'react';
+
 import BookStore from '../Flux/BookStore';
 import * as BookActions from '../Flux/BookActions';
+
+import Select from './Select';
 
 
 class BookView extends React.Component{
@@ -18,14 +21,15 @@ class BookView extends React.Component{
 	}
 
 	render(){
+		const MAX_QUANTITY = 10;
 		let book = this.state.book;
 		let style = {
 			'img': {
 				'margin': '20px',
-				'height': '300px', 
+				'height': '300px',
 				/*position: absolute; */
-				'top': '0px', 
-				'left': '10px' 
+				'top': '0px',
+				'left': '10px'
 			},
 			'subtitle': {
 				'color': 'gray',
@@ -37,7 +41,7 @@ class BookView extends React.Component{
 				'borderRadius': '25px',
 			    /*border: 2px solid #808080;*/
 			    'boxShadow': '0 0 0 4px rgba(0,0,0,.1)',
-			    'padding': '20px', 
+			    'padding': '20px',
 			    'width': '200px',
 			    'height': '300px'
 			},
@@ -46,14 +50,14 @@ class BookView extends React.Component{
 			}
 		};
 
-		
+
 		return (
 			<div className="container">
 				<div id="book_main" className="row">
 					{/*<div className=".col-xs-12 .col-md-8">*/}
 					<div className="col-xs-3">
 						<img className="img-thumbnail img-responsive" style={style.img}
-							 height="300" 
+							 height="300"
 							 src={book.Cover} alt={book.OriginalTitle + " Cover"}/>
 					</div>
 					<div className="col-xs-6">
@@ -70,20 +74,9 @@ class BookView extends React.Component{
 						<h3 style={style.subtitle}>Price</h3>
 						<h2>$ {book.Price}</h2>
 						<br />
-			        	<br />
-			        	Quantity: 
-						<select id="quantityDropdown">
-						    <option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>	
-							<option value="8">8</option>	
-							<option value="9">9</option>	
-							<option value="10">10</option>	
-						</select>
+			      <br />
+						Quantity:
+						<Select size={MAX_QUANTITY} />
 						<br />
 						<br />
 						<button className="btn btn-success" onClick={this._handleBuy.bind(this)}>Add to Cart</button>

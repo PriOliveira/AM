@@ -1,6 +1,8 @@
 import React from 'react';
+
 import BookStore from '../Flux/BookStore';
 
+import NavBar 	 	 from './NavBar';
 
 class BookGrid extends React.Component{
 	constructor(){
@@ -28,9 +30,9 @@ class BookGrid extends React.Component{
 		let style = {
 			'img': {
 				'margin': '20px',
-				'height': '200px', 
-				'top': '0px', 
-				'left': '10px' 
+				'height': '200px',
+				'top': '0px',
+				'left': '10px'
 			},
 			'div': {
 			    'display': 'inline-block',
@@ -40,13 +42,13 @@ class BookGrid extends React.Component{
 		}
 
 		return (
-		<div>
+			<div className="container">
 			{
-				this.state.books.map((book, index) => { 
+				this.state.books.map((book, index) => {
 					return (
 						/*<div key={book.ISBN13}>*/
 						<div key={index} style={style.div}>
-							<img style={style.img} height="200" className="img-thumbnail img-responsive"  
+							<img style={style.img} height="200" className="img-thumbnail img-responsive"
 								 src={book.Cover} alt={book.OriginalTitle + " Cover"}/>
 							<h5>{book.OriginalTitle}</h5><br/>
 							{book.Author}
@@ -54,7 +56,7 @@ class BookGrid extends React.Component{
 					);
 				})
 			}
-		</div>
+			</div>
 		);
 	}
 }
