@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {MAX_QUANTITY} from '../constants'
+
 import BookStore from '../Flux/BookStore';
 import * as BookActions from '../Flux/BookActions';
 
@@ -10,9 +12,16 @@ class BookView extends React.Component{
 	constructor(){
 		super();
 		this.state = {
-			book: BookStore._getByISBN13("9780439554930")
+			book: {}
 		}
 	}
+
+	componentDidMount() {
+		this.setState({
+			book: BookStore._getByISBN13(this.props.params.bookId)
+		});
+	}
+
 	_handleBuy(){
 		var selectedQuantity = document.getElementById("quantityDropdown");
 		var quantity = selectedQuantity.options[selectedQuantity.selectedIndex].value;
@@ -21,7 +30,7 @@ class BookView extends React.Component{
 	}
 
 	render(){
-		const MAX_QUANTITY = 10;
+
 		let book = this.state.book;
 		let style = {
 			'img': {
@@ -47,9 +56,17 @@ class BookView extends React.Component{
 			},
 			'padding': {
 				'padding': '10px'
+			},
+			'alignLeft': {
+				'textAlign': 'left'
 			}
 		};
 
+		let quantityArray = new Array(MAX_QUANTITY);
+		//Array.apply(null, Array(MAX_QUANTITY)).map(Number.call, Number);
+		for (var i = 0; i < quantityArray.length; i++) {
+			quantityArray[i] = i+1;
+		}
 
 		return (
 			<div className="container">
@@ -60,7 +77,7 @@ class BookView extends React.Component{
 							 height="300"
 							 src={book.Cover} alt={book.OriginalTitle + " Cover"}/>
 					</div>
-					<div className="col-xs-6">
+					<div className="col-xs-6" style={style.alignLeft}>
 							<h1>{book.OriginalTitle}</h1>
 							<h3 style={style.subtitle}>{book.Author}</h3>
 
@@ -76,27 +93,30 @@ class BookView extends React.Component{
 						<br />
 			      <br />
 						Quantity:
-						<Select size={MAX_QUANTITY} />
+						<Select items={quantityArray}/>
 						<br />
 						<br />
-						<button className="btn btn-success" onClick={this._handleBuy.bind(this)}>Add to Cart</button>
+						<button className="btn btn-success" onClick={this._handleBuy.bind(this)}>
+							Add to Cart
+						</button>
 					</div>
 				</div>
 				<div id="recomendations" className="row">
 				</div>
 				<hr />
-				<div id="book_details" className="row">
-					<div className="col" style={style.padding}>
+				<div id="book_details" className="row" >
+					<div className="col" style={Object.assign({}, style.padding, style.alignLeft)}>
 						<h2>Details</h2>
 						<br />
 						<b>Original Title:</b> {book.OriginalTitle} <br />
 						<b>Author:</b> {book.Author} <br />
+						<b>Series:</b> {book.Series} <br />
+						<b>Length:</b> {book.Length} pages<br />
 						<b>Publisher:</b> {book.Publisher} <br />
 						<b>ISBN:</b> {book.ISBN} <br />
 						<b>ISBN13:</b> {book.ISBN13} <br />
 						<b>Publish Date:</b> {book.PublishDate} <br />
-						<b>EditionLanguage:</b> {book.EditionLanguage} <br />
-						<b>Series:</b> {book.Series} <br />
+						<b>Edition Language:</b> {book.EditionLanguage} <br />
 						<b>Rate:</b> {book.Rate}
 					</div>
 				</div>

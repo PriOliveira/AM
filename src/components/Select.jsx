@@ -1,19 +1,20 @@
 import React from 'react';
 
-import SelectOption from './SelectOption';
-
-
-class Select extends React.Component{
-  constructor(props){
-    super(props);
-  }
-
+class SelectOption extends React.Component{
   render(){
     return (
-      <select>
+      <option value={this.props.value}>{this.props.value}</option>
+    );
+  }
+}
+
+class Select extends React.Component{
+  render(){
+    return (
+      <select style={this.props.style}>
         {
-          Array.apply(null, Array(this.props.size)).map((item, index) =>
-            <SelectOption key={index+1} value={index+1} />
+          this.props.items.map((item, index) =>
+            <SelectOption key={index} value={item} />
           )
         }
       </select>

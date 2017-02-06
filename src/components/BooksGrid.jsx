@@ -1,8 +1,7 @@
 import React from 'react';
+import {Link} from 'react-router';
 
 import BookStore from '../Flux/BookStore';
-
-import NavBar 	 	 from './NavBar';
 
 class BookGrid extends React.Component{
 	constructor(){
@@ -36,26 +35,46 @@ class BookGrid extends React.Component{
 			},
 			'div': {
 			    'display': 'inline-block',
-			    'margin': '10px'
+			    'margin': '10px',
+					'width': '200px'
 			    //'width': '50%'
+			},
+			'alignLeft': {
+				'textAlign': 'left'
+			},
+			'wordWrap': {
+				'wordWrap': 'break-word'
+			},
+			'title': {
+				'color': 'black'
+			},
+			'subtitle': {
+				'color': 'gray'
 			}
 		}
 
 		return (
-			<div className="container">
-			{
-				this.state.books.map((book, index) => {
-					return (
-						/*<div key={book.ISBN13}>*/
-						<div key={index} style={style.div}>
-							<img style={style.img} height="200" className="img-thumbnail img-responsive"
-								 src={book.Cover} alt={book.OriginalTitle + " Cover"}/>
-							<h5>{book.OriginalTitle}</h5><br/>
-							{book.Author}
-						</div>
-					);
-				})
-			}
+			<div className='container'>
+				<h3>Books</h3>
+				<hr/>
+				{
+					this.state.books.map((book, index) => {
+						return (
+							/*<div key={book.ISBN13}>*/
+							<div key={index} style={Object.assign({}, style.div, style.alignLeft)}>
+								<Link to={`/books/${book.ISBN13}`}>
+									<img style={style.img} height="200"
+									 className="img-thumbnail img-responsive"
+									 src={book.Cover} alt={book.OriginalTitle + " Cover"}/>
+								 	<div style={style.wordWrap}>
+										<h4 style={style.title}>{book.OriginalTitle}</h4>
+										<h5 style={style.subtitle}>{book.Author}</h5>
+									</div>
+								</Link>
+							</div>
+						);
+					})
+				}
 			</div>
 		);
 	}
