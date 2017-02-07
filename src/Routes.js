@@ -12,6 +12,11 @@ import BookView from './components/BookView';
 //import ProductView from './components/ProductView';
 
 import CheckOut from './components/views/CheckOut';
+import Cart from './components/Cart';
+import Delivery from './components/Delivery';
+import Payment from './components/Payment';
+import OrderConfirmation from './components/OrderConfirmation';
+import OrderFinished from './components/OrderFinished';
 
 const Routes = (props) => (
   <Router {...props}>
@@ -21,7 +26,13 @@ const Routes = (props) => (
         <Route path="books" component={BooksGrid}/>
         <Route path="books/:bookId" component={BookView}/>
       </Route>
-      <Route path="checkout" component={CheckOut} />
+      <Route path="checkout" component={CheckOut}>
+        <Route path="cart" component={Cart} />
+        <Route path="delivery" component={Delivery} />
+        <Route path="payment" component={Payment} />
+        <Route path="confirm" component={OrderConfirmation} />
+        <Route path="complete" component={OrderFinished} />
+      </Route>
       <Route path="login" component={LogIn} />
       <Route path="registerbook" component={RegisterBook} />
     </Route>
