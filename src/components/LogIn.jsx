@@ -15,6 +15,11 @@ class LogIn extends React.Component{
 				//backgroundColor: '#eee',
 				border: '2px solid rgba(0,0,0,0.05)',
 				borderRadius: '7px'
+			},
+			'login': {
+				display: 'flex',
+				justifyContent: 'center',
+				alignItems: 'center'
 			}/*,
 			'divHR': {
 				width: '100%',
@@ -29,35 +34,37 @@ class LogIn extends React.Component{
 			}*/
 		}
 		return (
-			<div className="container App">
-				<img src={logo} className="App-logo" alt="logo" /> 
-				<form action="" method="post" name="signInForm" style={style['signInForm']}>       
-					<h3>Sign In</h3>
-						<hr/>
-						<InputText />
-						
-						<br />
+			<div style={style.login}>
+				<div className="container App">
+					<img src={logo} className="App-logo" alt="logo" />
+					<form action="" method="post" name="signInForm" style={style['signInForm']}>
+						<h3>Sign In</h3>
+							<hr/>
+							<InputText />
 
-						<InputPassword />   
-						
-						<br />
-						
-						<Button type="Submit" name="Sign In" 
-								text="Sign In" classType="primary"/> 
+							<br />
 
-						{/*<div style={style['divHR']}>
-							<span style={style['spanHR']}>
-							Section Title
-							</span>
-						</div>
+							<InputPassword />
 
-						<br /><br /><br />*/}
-						<hr />
+							<br />
 
-						<Button type="Submit" name="Sign In"
-								text="Create you account" classType="default"/> 
-				</form>	
-			</div>			
+							<Button type="Submit" name="Sign In"
+									text="Sign In" classType="primary"/>
+
+							{/*<div style={style['divHR']}>
+								<span style={style['spanHR']}>
+								Section Title
+								</span>
+							</div>
+
+							<br /><br /><br />*/}
+							<hr />
+
+							<Button type="Submit" name="Sign In"
+									text="Create you account" classType="default"/>
+					</form>
+				</div>
+			</div>
 		);
 	}
 }
