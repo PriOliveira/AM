@@ -36,8 +36,11 @@ class LogIn extends React.Component{
 		return (
 			<div style={style.login}>
 				<div className="container App">
-					<img src={logo} className="App-logo" alt="logo" />
-					<form action="" method="post" name="signInForm" style={style['signInForm']}>
+					{
+						// <img src={logo} className="App-logo" alt="logo" />
+					}
+
+					<form action="" name="signInForm" style={style['signInForm']}>
 						<h3>Sign In</h3>
 							<hr/>
 							<InputText />

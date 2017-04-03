@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "react-scripts": "0.8.5"
+    "react-scripts": "0.8.5",
+    "styled-components": "^1.4.4"
   },
   "dependencies": {
     "flux": "^3.1.2",

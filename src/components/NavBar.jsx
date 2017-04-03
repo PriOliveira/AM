@@ -27,7 +27,8 @@ class NavBar extends React.Component{
 				//"borderColor": "#222",
 				"borderWidth": "0px",
 				"color": "#9d9d9d",
-				"height": "50px"
+				"height": "50px",
+				boxShadow: 'none',
 			}
 		}
 

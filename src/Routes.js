@@ -9,6 +9,8 @@ import NavPage from './components/views/NavPage';
 import RegisterBook from './components/RegisterBook';
 import BooksGrid from './components/BooksGrid';
 import BookView from './components/BookView';
+import TvShowsGrid from './components/TvShowsGrid';
+import TvShowView from './components/TvShowView';
 //import ProductView from './components/ProductView';
 
 import CheckOut from './components/views/CheckOut';
@@ -25,6 +27,8 @@ const Routes = (props) => (
         <IndexRoute component={HomePage}/>
         <Route path="books" component={BooksGrid}/>
         <Route path="books/:bookId" component={BookView}/>
+        <Route path="tvshows" component={TvShowsGrid}/>
+        <Route path="tvshows/:tvshowId" component={TvShowView}/>
       </Route>
       <Route path="checkout" component={CheckOut}>
         <Route path="cart" component={Cart} />

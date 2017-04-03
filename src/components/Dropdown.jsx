@@ -24,7 +24,7 @@ class Dropdown extends React.Component{
 				<button className="btn btn-primary dropdown-toggle" type="button"
 								style={this.props.style}>
 					{items.title}
-					<span className="caret"></span>
+					<span className="caret" style={{margin: '4px'}}></span>
 				</button>
 				{
 					this.state.isOpen &&

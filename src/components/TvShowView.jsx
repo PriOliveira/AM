@@ -2,8 +2,8 @@ import React from 'react';
 
 import {MAX_QUANTITY} from '../constants'
 
-import BookStore from '../Flux/BookStore';
-import * as BookActions from '../Flux/BookActions';
+import TvShowStore from '../Flux/TvShowStore';
+import * as TvShowActions from '../Flux/TvShowActions';
 
 import Select from './Select';
 
@@ -15,21 +15,18 @@ class Details extends React.Component{
 				'textAlign': 'left'
 			}
 		}
-		let book = this.props.book;
+		let tvshow = this.props.tvshow;
 		return (
 			<div className="col" style={style.details}>
 				<h2>Details</h2>
 				<br />
-				<b>Original Title:</b> {book.OriginalTitle} <br />
-				<b>Author:</b> {book.Author} <br />
-				<b>Series:</b> {book.Series} <br />
-				<b>Length:</b> {book.Length} pages<br />
-				<b>Publisher:</b> {book.Publisher} <br />
-				<b>ISBN:</b> {book.ISBN} <br />
-				<b>ISBN13:</b> {book.ISBN13} <br />
-				<b>Publish Date:</b> {book.PublishDate} <br />
-				<b>Edition Language:</b> {book.EditionLanguage} <br />
-				<b>Rate:</b> {book.Rate}
+				<b>Original Title:</b> {tvshow.OriginalTitle} <br />
+        <b>Creator:</b> {tvshow.Creator} <br />
+        <b>IMDB:</b> {tvshow.IMDB} <br />
+        <b>Year:</b> {tvshow.Year} <br />
+				<b>Seasons:</b> {tvshow.Seasons} <br />
+				<b>Country:</b> {tvshow.Country} <br />
+				<b>Rate:</b> {tvshow.Rate}
 			</div>
 	);
 	}
@@ -81,17 +78,17 @@ class PriceDiv extends React.Component{
 	}
 }
 
-class BookView extends React.Component{
+class TvShowView extends React.Component{
 	constructor(){
 		super();
 		this.state = {
-			book: {}
+			tvshow: {}
 		}
 	}
 
 	componentDidMount() {
 		this.setState({
-			book: BookStore._getByISBN13(this.props.params.bookId)
+			tvshow: TvShowStore._getById(this.props.params.tvshowId)
 		});
 	}
 
@@ -101,12 +98,12 @@ class BookView extends React.Component{
 		//let quantity = 1;
 	  console.debug(quantity);
 
-		BookActions.buyBook({ISBN13: this.state.book.ISBN13, quantity: quantity});
+		TvShowActions.buyTvShow({IMDB: this.state.tvshow.IMDB, quantity: quantity});
 	}
 
 
 	render(){
-		let book = this.state.book;
+		let tvshow = this.state.tvshow;
 		let style = {
 			'img': {
 				'margin': '20px',
@@ -134,36 +131,36 @@ class BookView extends React.Component{
 
 		return (
 			<div className="container">
-				<div id="book_main" className="row">
+				<div id="tvshow_main" className="row">
 					{/*<div className=".col-xs-12 .col-md-8">*/}
 					<div className="col-xs-3">
 						<img className="img-thumbnail img-responsive" style={style.img}
 							 height="300"
-							 src={book.Cover} alt={book.OriginalTitle + " Cover"}/>
+							 src={tvshow.Cover} alt={tvshow.OriginalTitle + " Cover"}/>
 					</div>
 					<div className="col-xs-6" style={style.alignLeft}>
-							<h1>{book.OriginalTitle}</h1>
-							<h3 style={style.subtitle}>{book.Author}</h3>
+							<h1>{tvshow.OriginalTitle}</h1>
+							<h3 style={style.subtitle}>{tvshow.Year}</h3>
 
 							{/*<button className="btn btn-default">{book.Type}</button>*/}
 							<hr />
-							<div id="book_description" style={style.padding}>
-								{book.Description}
+							<div id="tvshow_description" style={style.padding}>
+								{tvshow.Description}
 							</div>
 						</div>
 					<div className=" col-xs-3">
-						<PriceDiv price={book.Price} handleBuy={this._handleBuy.bind(this)}/>
+						<PriceDiv price={tvshow.Price} handleBuy={this._handleBuy.bind(this)}/>
 					</div>
 				</div>
 				{/*<div id="recomendations" className="row">
 				</div>*/}
 				<hr />
-				<div id="book_details" className="row" >
-					<Details book={book}/>
+				<div id="tvshow_details" className="row" >
+					<Details tvshow={tvshow}/>
 				</div>
 			</div>
 		);
 	}
 }
 
-export default BookView;
+export default TvShowView;
