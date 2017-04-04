@@ -7,6 +7,7 @@
     "styled-components": "^1.4.4"
   },
   "dependencies": {
+    "express": "^4.15.2",
     "flux": "^3.1.2",
     "react": "^15.4.2",
     "react-bootstrap": "^0.30.7",
@@ -15,6 +16,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:server": "node server/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

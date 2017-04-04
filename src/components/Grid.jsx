@@ -40,7 +40,7 @@ class Grid extends React.Component{
       },
       tvshows: {
         id: 'IMDB',
-        title: 'Author',
+        title: 'Tv Shows',
         subtitle: 'Year',
       },
     }
