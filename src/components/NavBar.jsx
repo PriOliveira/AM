@@ -34,50 +34,50 @@ class NavBar extends React.Component{
 
 		return (
 			<div>
-    				<nav className="navbar navbar-inverse">
-    					<div className="container-fluid">
-    					    <div id="nav_belt" className="row">
-    					        <div id="nav_logo" className="col-md-1 navbar-header nav-left">
-        						    <IndexLink to="/" className="navbar-brand">
-        						        AM
-        						    </IndexLink>
-    					        </div>
-    					        <div id="nav_search" className="col-6 col-md-7 nav-fill">
-    					            <Search />
-    					        </div>
-    					        <div className="col-md-4 nav-right">
+				<nav className="navbar navbar-inverse">
+					<div className="container-fluid">
+					    <div id="nav_belt" className="row">
+					        <div id="nav_logo" className="col-md-1 navbar-header nav-left">
+    						    <IndexLink to="/" className="navbar-brand">
+    						        AM
+    						    </IndexLink>
+					        </div>
+					        <div id="nav_search" className="col-6 col-md-7 nav-fill">
+					            <Search />
+					        </div>
+					        <div className="col-md-4 nav-right">
 
-    					        </div>
-        						{/*<div className="navbar-header nav-left">
-        						    <div id="nav_logo" >
-        						        <IndexLink to="/" activeClassName="active" className="navbar-brand">AM</IndexLink>
-        					    	</div>
-        					    </div>
-        					    <div id="nav_search" className="nav-fill">
-        					        <Search />
-        					    </div>
-        					    <div className="nav-right">
-        					    </div>*/}
+					        </div>
+    						{/*<div className="navbar-header nav-left">
+    						    <div id="nav_logo" >
+    						        <IndexLink to="/" activeClassName="active" className="navbar-brand">AM</IndexLink>
+    					    	</div>
     					    </div>
-    					    <div id="nav_main">
-    							<ul className="nav navbar-nav">
-    								<li>
-    									<Dropdown items={dropdownItems} style={style["dropdown"]}/>
-    								</li>
-    								<li>
-    									<a href="#">
-    										Kindle Store
-    									</a>
-    								</li>
-    							</ul>
-    							<ul className="nav navbar-nav navbar-right">
-    								<li><Link to="/login">Sign In</Link></li>
-    								<li><Link to="/checkout">Cart</Link></li>
-    							</ul>
-    						</div>
-    					</div>
-    				</nav>
-    			</div>
+    					    <div id="nav_search" className="nav-fill">
+    					        <Search />
+    					    </div>
+    					    <div className="nav-right">
+    					    </div>*/}
+					    </div>
+					    <div id="nav_main">
+							<ul className="nav navbar-nav">
+								<li>
+									<Dropdown items={dropdownItems} style={style["dropdown"]}/>
+								</li>
+								<li>
+									<a href="#">
+										Kindle Store
+									</a>
+								</li>
+							</ul>
+							<ul className="nav navbar-nav navbar-right">
+								<li><Link to="/login">Sign In</Link></li>
+								<li><Link to="/checkout">Cart</Link></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</div>
 		);
 	}
 }

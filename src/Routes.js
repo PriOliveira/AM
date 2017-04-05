@@ -31,7 +31,8 @@ const Routes = (props) => (
         <Route path="tvshows/:tvshowId" component={TvShowView}/>
       </Route>
       <Route path="checkout" component={CheckOut}>
-        <Route path="cart" component={Cart} />
+        <IndexRoute component={Cart}/>
+        // <Route path="cart" component={Cart} />
         <Route path="delivery" component={Delivery} />
         <Route path="payment" component={Payment} />
         <Route path="confirm" component={OrderConfirmation} />
