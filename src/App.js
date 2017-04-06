@@ -1,17 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './App.css';
 
-// import LogIn from './components/LogIn';
-// import HomePage from './components/views/HomePage';
-
-
-class App extends Component{
+class App extends React.Component{
   render() {
     return (
         <div className="App">
           {this.props.children}
-          {/* <HomePage />
-           <LogIn />*/}
         </div>
     );
   }
