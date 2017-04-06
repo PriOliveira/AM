@@ -3,7 +3,7 @@ from api_server.views import list_books, detail_books, add_books, remove_book, r
 
 _endpoints = [
     ('/', root, ['GET']),
-\
+
     ('/api/books', list_books, ['GET']),
     ('/api/books', add_books, ['POST']),
     ('/api/books/<int:id>', remove_book, ['DELETE']),
