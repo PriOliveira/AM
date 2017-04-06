@@ -1,23 +1,13 @@
 <html><head></head><body>
 
 <script>
-    function myFunction(){
-        var oReq = new XMLHttpRequest();
-        oReq.onload = function(xhr){
-            var books = JSON.loads(xhr.responseText);
 
-            for(var  i = 0 ; i < books.length ; i++){
-                var node = document.createElement("p");
-                var textnode = document.createTextNode(books[i].name);
-                node.appendChild(textnode);
-                document.getElementsByTagName("body")[0].appendChild(node);
-            }
-        };
-        oReq.open("GET", "/api/books", true);
-        oReq.send();
-    }
 </script>
 
-<div style="background-color: red; padding: 20px" onclick="myFunction()">CLICK-ME</div>
+Olá {{name}} <br>
 
+<div style="display: inline-block;background-color: red; padding: 20px" onclick="showBooks()">Show Books</div>
+<div id="titles"></div>
+
+<script src="/static/main.js"></script>
 </body></html>
